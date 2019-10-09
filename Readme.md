@@ -33,8 +33,8 @@
 Host borg-server
 IdentityFile ~/.ssh/keys/id_rsa
 ```
-Здесь указывается сервер к которому будем подключаться и путь до закрытого ключа на клиенте
-Т.е. на сервере у нас будет открытый ключ, а на клиенте закрытый ключ
+Здесь указывается сервер к которому будем подключаться и путь до закрытого ключа на клиенте, т.е. на сервере у нас будет открытый ключ, а на клиенте закрытый ключ
+
 - Далее необходимо скопировать открытый ключ из файла (с клиента) ```id_rsa.pub``` в файл ```/home/borg/.ssh/authorized_keys``` на сервер бэкапов и привести файл к такому виду (так как ВМ у меня тестовые то привожу вывод файла, если у вас продакшен, о ваших ключах никто не должен знать):
 ```
 'command="/usr/local/bin/borg serve" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkh81l3BvHNITaN/EbwaCtMjBqxP+e7qVey6kAeTR+SgZaxIwuVdSKl/LbEBM2PRIEk4swuo4WtRNTPGYjsBjtAJV6Njodb8qs+G0YNVTFbBSzQ0UUhU30jLCANsR+fpm14Bvg1FmI6swyhtpSwCJdSX1//9gfvm8LC0F0AU4u2JWvO7iggAdrPLOc8LThZcADJc7+yERfTwbFoHY6jVahDFtLIClIcCIrA8P66/WGCjviMTdTpz3A2FdEMcIwNsBFkTjwQjOXjllKNPIguNR0ejbnzAeUEIMUAB4ptSiVayYPPm8Py2rzj6gb08I8tfuMXBY/8M2vTFo4af4H29Cx borg@borg-client'
@@ -60,6 +60,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkh81l3BvHNITaN/EbwaCtMjBqxP+e7qVey6kAeTR+
 
 - Далее нам надо инициализировать с клиента репозитории Borg Backup командой ```borg init -e none borg@borg-server:MyBorgRepo```, там будут храниться файлы резервных копий
 - Далее мы можем командой ```borg create --stats --list borg@borg-server:MyBorgRepo::"MyFirstBackup-{now:%Y-%m-%d_%H:%M:%S}" /etc``` создать свою первую резервную копию
+
 Здесь указаны такие ключи как ```--stats``` это означает выводить статистику, ```--list``` выводит в процессе листинг файлов которые резервируются, в самом конце указываем директорию, которую бэкапим
 - Можем с клиента посмотреть наши бэкапы командой ```borg list borg@borg-server:MyBorgRepo```:
 ```
