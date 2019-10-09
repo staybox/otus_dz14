@@ -53,7 +53,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkh81l3BvHNITaN/EbwaCtMjBqxP+e7qVey6kAeTR+
 ```
 Протестировать работоспособность можно введя под пользователем borg (на клиенте), команду ```ssh borg@borg-server```, все должно работать.
 
-####Настройка Borg Backup
+#### Настройка Borg Backup
 
 - Далее нам надо инициализировать с клиента репозитории Borg Backup командой ```borg init -e none borg@borg-server:MyBorgRepo```, там будут храниться файлы резервных копий
 - Далее мы можем командой ```borg create --stats --list borg@borg-server:MyBorgRepo::"MyFirstBackup-{now:%Y-%m-%d_%H:%M:%S}" /etc``` создать свою первую резервную копию
