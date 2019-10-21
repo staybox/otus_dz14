@@ -119,5 +119,3 @@ Keeping archive: MyFirstBackup4-2019-10-10_02:18:25   Thu, 2019-10-10 02:18:26 [
 [Пример настройки через systemd]
 
 [Пример настройки через systemd]:https://blog.andrewkeech.com/posts/170719_borg.html
-
-
